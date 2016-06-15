@@ -9,7 +9,7 @@
 import UIKit
 
 enum SwapSegueIdentifier: String {
-    case PinkVCSegue, GreenVCSegue
+    case PinkVCSegue, GreenVCSegue, BlueVCSegue, YellowVCSegue
 }
 
 class ContainerViewController: UIViewController {
@@ -17,8 +17,10 @@ class ContainerViewController: UIViewController {
     var transitionInProgress = false
     var currentSegueIdentifier = SwapSegueIdentifier.PinkVCSegue.rawValue
     
-    var pinkVC: PinkViewController?
-    var greenVC: GreenViewController?
+    var currentVC: UIViewController?
+    var newVC: UIViewController?
+    
+    var availableVCSegues = [SwapSegueIdentifier.PinkVCSegue.rawValue, SwapSegueIdentifier.GreenVCSegue.rawValue, SwapSegueIdentifier.BlueVCSegue.rawValue, SwapSegueIdentifier.YellowVCSegue.rawValue]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,28 +30,22 @@ class ContainerViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SwapSegueIdentifier.PinkVCSegue.rawValue {
-            pinkVC = segue.destinationViewController as? PinkViewController
+    
+        newVC = segue.destinationViewController
+        
+        if childViewControllers.count > 0 {
+            swap(fromVC: childViewControllers[0], toVC: newVC!)
+        } else {
+            addChildViewController(segue.destinationViewController)
+            let destinationView = segue.destinationViewController.view
+            destinationView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
+            destinationView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            view.addSubview(destinationView)
+            segue.destinationViewController.didMoveToParentViewController(self)
         }
         
-        if segue.identifier == SwapSegueIdentifier.GreenVCSegue.rawValue {
-            greenVC = segue.destinationViewController as? GreenViewController
-        }
-        
-        if segue.identifier == SwapSegueIdentifier.PinkVCSegue.rawValue {
-            if childViewControllers.count > 0 {
-                swap(fromVC: childViewControllers[0], toVC: pinkVC!)
-            } else {
-                addChildViewController(segue.destinationViewController)
-                let destinationView = segue.destinationViewController.view
-                destinationView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
-                destinationView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-                view.addSubview(destinationView)
-                segue.destinationViewController.didMoveToParentViewController(self)
-            }
-        } else if segue.identifier == SwapSegueIdentifier.GreenVCSegue.rawValue {
-            swap(fromVC: childViewControllers[0], toVC: greenVC!)
-        }
+        currentVC = newVC
+        newVC = nil
     }
     
     func swap(fromVC fromVC: UIViewController, toVC: UIViewController) {
@@ -67,30 +63,14 @@ class ContainerViewController: UIViewController {
     }
     
     
-    func swapViewControllers() {
+    func switchVC(toIndex index: Int) {
         
         guard transitionInProgress == false else {
             return
         }
         
         transitionInProgress = true
-        
-        switch currentSegueIdentifier {
-        case SwapSegueIdentifier.PinkVCSegue.rawValue:
-            currentSegueIdentifier = SwapSegueIdentifier.GreenVCSegue.rawValue
-        case SwapSegueIdentifier.GreenVCSegue.rawValue:
-            currentSegueIdentifier = SwapSegueIdentifier.PinkVCSegue.rawValue
-        default:
-            fatalError("It should only ever be Green/Pink")
-        }
-        
-        if currentSegueIdentifier == SwapSegueIdentifier.PinkVCSegue.rawValue && pinkVC != nil {
-            swap(fromVC: greenVC!, toVC: pinkVC!)
-        }
-        
-        if currentSegueIdentifier == SwapSegueIdentifier.GreenVCSegue.rawValue && greenVC != nil {
-            swap(fromVC: pinkVC!, toVC: greenVC!)
-        }
+        currentSegueIdentifier = availableVCSegues[index]
         
         performSegueWithIdentifier(currentSegueIdentifier, sender: nil)
     }

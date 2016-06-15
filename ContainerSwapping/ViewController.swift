@@ -34,8 +34,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func segmentControlAction(sender: UISegmentedControl) {
-        
-        self.containerVC?.swapViewControllers()
+        self.containerVC?.switchVC(toIndex: sender.selectedSegmentIndex)
     }
 }
 

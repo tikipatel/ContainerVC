@@ -85,8 +85,8 @@
                     <connections>
                         <segue destination="9vs-Pc-Grr" kind="custom" identifier="PinkVCSegue" customClass="SwapSegue" customModule="ContainerSwapping" id="gvd-xS-yT9"/>
                         <segue destination="FDY-w5-zJb" kind="custom" identifier="GreenVCSegue" customClass="SwapSegue" customModule="ContainerSwapping" id="UYh-te-4HL"/>
-                        <segue destination="vjf-wF-ZhK" kind="custom" identifier="BlueVCSegue" customClass="SwapSegue" id="icQ-7e-6cZ"/>
-                        <segue destination="4fE-00-bNk" kind="custom" identifier="YellowVCSegue" customClass="SwapSegue" id="qCw-vQ-cDx"/>
+                        <segue destination="vjf-wF-ZhK" kind="custom" identifier="BlueVCSegue" customClass="SwapSegue" customModule="ContainerSwapping" id="icQ-7e-6cZ"/>
+                        <segue destination="4fE-00-bNk" kind="custom" identifier="YellowVCSegue" customClass="SwapSegue" customModule="ContainerSwapping" id="qCw-vQ-cDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1p8-sD-rH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
