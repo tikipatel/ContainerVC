@@ -23,17 +23,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Container" {
             containerVC = segue.destinationViewController as? ContainerViewController
         }
     }
 
-    @IBAction func segmentControlAction(sender: UISegmentedControl) {
+    @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         self.containerVC?.switchVC(toIndex: sender.selectedSegmentIndex)
     }
 }

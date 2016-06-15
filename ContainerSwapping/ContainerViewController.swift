@@ -26,10 +26,10 @@ class ContainerViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        performSegueWithIdentifier(SwapSegueIdentifier.PinkVCSegue.rawValue, sender: nil)
+        performSegue(withIdentifier: SwapSegueIdentifier.PinkVCSegue.rawValue, sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
     
         newVC = segue.destinationViewController
         
@@ -38,26 +38,26 @@ class ContainerViewController: UIViewController {
         } else {
             addChildViewController(segue.destinationViewController)
             let destinationView = segue.destinationViewController.view
-            destinationView.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
-            destinationView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            view.addSubview(destinationView)
-            segue.destinationViewController.didMoveToParentViewController(self)
+            destinationView?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+            destinationView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.addSubview(destinationView!)
+            segue.destinationViewController.didMove(toParentViewController: self)
         }
         
         currentVC = newVC
         newVC = nil
     }
     
-    func swap(fromVC fromVC: UIViewController, toVC: UIViewController) {
+    func swap(fromVC: UIViewController, toVC: UIViewController) {
         
-        toVC.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
+        toVC.view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         
-        fromVC.willMoveToParentViewController(nil)
+        fromVC.willMove(toParentViewController: nil)
         addChildViewController(toVC)
         
-        transitionFromViewController(fromVC, toViewController: toVC, duration: 0.5, options: .TransitionCrossDissolve, animations: nil) { (finished) in
+        transition(from: fromVC, to: toVC, duration: 0.5, options: .transitionCrossDissolve, animations: nil) { (finished) in
             fromVC.removeFromParentViewController()
-            toVC.didMoveToParentViewController(self)
+            toVC.didMove(toParentViewController: self)
             self.transitionInProgress = false
         }
     }
@@ -72,6 +72,6 @@ class ContainerViewController: UIViewController {
         transitionInProgress = true
         currentSegueIdentifier = availableVCSegues[index]
         
-        performSegueWithIdentifier(currentSegueIdentifier, sender: nil)
+        performSegue(withIdentifier: currentSegueIdentifier, sender: nil)
     }
 }
