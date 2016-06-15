@@ -14,6 +14,10 @@
 		31FEBC531D11B44500BA5FD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31FEBC511D11B44500BA5FD7 /* LaunchScreen.storyboard */; };
 		31FEBC5E1D11B44500BA5FD7 /* ContainerSwappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC5D1D11B44500BA5FD7 /* ContainerSwappingTests.swift */; };
 		31FEBC691D11B44500BA5FD7 /* ContainerSwappingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC681D11B44500BA5FD7 /* ContainerSwappingUITests.swift */; };
+		31FEBC771D11B49100BA5FD7 /* SwapSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC761D11B49100BA5FD7 /* SwapSegue.swift */; };
+		31FEBC791D11B51000BA5FD7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC781D11B51000BA5FD7 /* ContainerViewController.swift */; };
+		31FEBC7B1D11B66600BA5FD7 /* PinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC7A1D11B66600BA5FD7 /* PinkViewController.swift */; };
+		31FEBC7D1D11B67000BA5FD7 /* GreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FEBC7C1D11B67000BA5FD7 /* GreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		31FEBC641D11B44500BA5FD7 /* ContainerSwappingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContainerSwappingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FEBC681D11B44500BA5FD7 /* ContainerSwappingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSwappingUITests.swift; sourceTree = "<group>"; };
 		31FEBC6A1D11B44500BA5FD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31FEBC761D11B49100BA5FD7 /* SwapSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapSegue.swift; sourceTree = "<group>"; };
+		31FEBC781D11B51000BA5FD7 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		31FEBC7A1D11B66600BA5FD7 /* PinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinkViewController.swift; sourceTree = "<group>"; };
+		31FEBC7C1D11B67000BA5FD7 /* GreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,10 @@
 			children = (
 				31FEBC481D11B44500BA5FD7 /* AppDelegate.swift */,
 				31FEBC4A1D11B44500BA5FD7 /* ViewController.swift */,
+				31FEBC761D11B49100BA5FD7 /* SwapSegue.swift */,
+				31FEBC781D11B51000BA5FD7 /* ContainerViewController.swift */,
+				31FEBC7A1D11B66600BA5FD7 /* PinkViewController.swift */,
+				31FEBC7C1D11B67000BA5FD7 /* GreenViewController.swift */,
 				31FEBC4C1D11B44500BA5FD7 /* Main.storyboard */,
 				31FEBC4F1D11B44500BA5FD7 /* Assets.xcassets */,
 				31FEBC511D11B44500BA5FD7 /* LaunchScreen.storyboard */,
@@ -256,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31FEBC7D1D11B67000BA5FD7 /* GreenViewController.swift in Sources */,
 				31FEBC4B1D11B44500BA5FD7 /* ViewController.swift in Sources */,
 				31FEBC491D11B44500BA5FD7 /* AppDelegate.swift in Sources */,
+				31FEBC791D11B51000BA5FD7 /* ContainerViewController.swift in Sources */,
+				31FEBC771D11B49100BA5FD7 /* SwapSegue.swift in Sources */,
+				31FEBC7B1D11B66600BA5FD7 /* PinkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
